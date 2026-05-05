@@ -9,6 +9,13 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    
+    # 🟢 SPIN UP THE DATABASE IN THE CI/CD CLOUD 🟢
+    services:
+      chromadb:
+        image: chromadb/chroma:latest
+        ports:
+          - 8000:8000
 
     steps:
     - name: Checkout Code

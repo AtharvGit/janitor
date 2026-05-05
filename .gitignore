@@ -1,0 +1,13 @@
+# Environments
+venv/
+.env
+
+# Cache and Logs
+__pycache__/
+.pytest_cache/
+janitor.log
+
+# Databases and Cloud Simulations
+data/
+chroma_data/
+localstack_data/

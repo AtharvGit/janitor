@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  chromadb:
+    image: chromadb/chroma:latest
+    ports:
+      - "8000:8000"
+    volumes:
+      - chroma_data:/chroma/chroma
+
+  localstack:
+    image: localstack/localstack:3.8.0  # <--- The Fix
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - AWS_DEFAULT_REGION=eu-central-1 
+
+volumes:
+  chroma_data:

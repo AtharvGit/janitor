@@ -4,9 +4,12 @@ from src.logger import get_logger
 logger = get_logger('VectorStore')
 
 class ChromaManager:
-    def __init__(self, host: str = 'localhost', port: int = 8000):
+    def __init__(self, host="localhost", port=8000, client=None):
         try:
-            self.client = chromadb.HttpClient(host=host, port=port)
+            if client:
+                self.client = client
+            else:
+                self.client = chromadb.HttpClient(host=host, port=port)
             self.collection = self.client.get_or_create_collection(name='knowledge_base')
             logger.info(f'connected to chromadb at {host}:{port}')
         except Exception as e:

@@ -5,6 +5,7 @@ from src.vector_store import ChromaManager
 @pytest.fixture
 def test_db():
     """Creates a temporary, in-memory database specifically for testing."""
+    fake_client = chromadb.EphemeralClient()
     manager = ChromaManager()
     manager.client = chromadb.EphemeralClient()
     
